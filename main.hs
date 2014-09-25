@@ -3,8 +3,6 @@ main = do
 	input <- getLine
 	putStrLn $ toPigLatin input
 
---intoPigLatin :: String -> String
-
 toPigLatin :: String -> String
 toPigLatin = unwords . map wordToPigLatin . words
 
