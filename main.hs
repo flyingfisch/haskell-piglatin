@@ -3,11 +3,14 @@ import Data.List
 main = do
     putStrLn "Translate (t)o or (f)rom Pig Latin?"
     choice <- getLine
+
     let translator = chooser choice
 
     putStrLn "Type some text to translate into Pig Latin!"
+
     input <- getLine
     putStrLn $ translator input
+
 
 chooser :: String -> (String -> String)
 chooser choice =
@@ -26,5 +29,5 @@ wordToPigLatin (x:xs) = xs ++ [x] ++ "ay"
 
 wordFromPigLatin :: String -> String
 wordFromPigLatin x =
-    let withoutAy = x \\ "ay"
+    let withoutAy = fst $ splitAt (length x - 2) x
     in [last withoutAy] ++ init withoutAy
